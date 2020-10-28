@@ -8,7 +8,15 @@
 
 <!-- Form Name -->
 <legend><center><h2><b>Registration Form</b></h2></center></legend><br>
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <!-- Text input-->
 
 <div class="form-group">

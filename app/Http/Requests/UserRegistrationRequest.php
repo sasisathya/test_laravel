@@ -24,11 +24,22 @@ class UserRegistrationRequest extends FormRequest
     public function rules()
     {
         return [
-            'company_name' => 'required',
-            'email'=> 'required',
-            'mobile'=> 'required',
-            'hr_name'=> 'required',
-            'user_password'=> 'required',
+            'company_name' => 'required|alpha_num',
+            'email' => ['regex:/^((?!@gmail\.com|@yahoo\.com).)*$/'],
+            'mobile'=> 'required|digits:10',
+            'hr_name'=> 'required|alpha_num',
+            'user_password'=> 'required'
+        ];
+    }
+     public function messages()
+    {
+        return [
+            'company_name.required' => 'The Company Name is required.',
+            'company_name.alpha_num' => 'The Company Name Should contain only alphabets and numbers.',
+            'mobile.required'       => 'Mobile Number is required.',
+            'hr_name.required' => 'The HR Name is required.',
+            'hr_name.alpha_num' => 'The HR Name Should contain only alphabets and numbers.',
+
         ];
     }
 }
